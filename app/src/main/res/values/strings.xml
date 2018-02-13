@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ApplitoolsHelloWorld</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="welcome_to_first_eyes_test">Welcome to your first Applitools Eyes test!!!</string>
+    <string name="press_to_make_the_number_below_random">Press to make the number below random</string>
+    <string name="press_to_simulate_additional_differences">Press to simulate additional differences</string>
+    <string name="click_me">Click me!</string>
+    <string name="_123456">123456</string>
+    <string name="you_successfully_clicked_the_button">You successfully clicked the button!</string>
+</resources>
