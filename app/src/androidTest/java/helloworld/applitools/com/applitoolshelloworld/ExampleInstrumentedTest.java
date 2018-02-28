@@ -30,7 +30,7 @@ public class ExampleInstrumentedTest {
 
         try {
             // Start the test
-            eyes.open("Hello World!", "My first Selenium Java test!");
+            eyes.open("Hello World!", "My first Espresso Android test!");
 
             // Visual checkpoint #1.
             eyes.checkWindow("Hello!");
