@@ -12,6 +12,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AppCenter.start(getApplication(), "b36e95a0-2218-4c32-8a33-22c06400d1aa", Analytics.class, Crashes.class);
 
         initViews();
         fillTitle(false);

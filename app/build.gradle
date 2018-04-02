@@ -34,8 +34,14 @@ dependencies {
 
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+    androidTestCompile('com.microsoft.appcenter:espresso-test-extension:1.2')
+
     androidTestImplementation 'com.applitools:eyes-android-espresso:1.4.2@aar'
     androidTestImplementation 'com.applitools:eyes-android-common:1.4.2'
     androidTestImplementation 'com.applitools:eyes-android-core:1.4.2'
+
+    def appCenterSdkVersion = '1.4.0'
+    compile "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    compile "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 
 }
