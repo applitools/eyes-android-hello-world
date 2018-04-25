@@ -1,10 +1,12 @@
 package helloworld.applitools.com.applitoolshelloworld;
 
-import android.graphics.Typeface;
+import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -69,39 +71,44 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @SuppressWarnings("StringBufferReplaceableByString")
     private void fillTitle(boolean isChecked) {
-        StringBuilder builder = new StringBuilder();
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+
         if (isChecked) {
-            builder.append("<span style=\"color:#8b00ff;\">H</span>")
-                    .append("<span style=\"color:#4600ff;\">E</span>")
-                    .append("<span style=\"color:#0000ff;\">L</span>")
-                    .append("<span style=\"color:#0080ff;\">L</span>")
-                    .append("<span style=\"color:#00ffff;\">O</span>")
-                    .append("<span style=\"color:#00ff80;\"> </span>")
-                    .append("<span style=\"color:#ffff00;\">W</span>")
-                    .append("<span style=\"color:#ffff00;\">O</span>")
-                    .append("<span style=\"color:#ffbf00;\">R</span>")
-                    .append("<span style=\"color:#ff7f00;\">L</span>")
-                    .append("<span style=\"color:#ff4000;\">D</span>")
-                    .append("<span style=\"color:#ff0000;\">!</span>");
+            builder.append(buildSpannableString("H", "#8b00ff"));
+            builder.append(buildSpannableString("E", "#4600ff"));
+            builder.append(buildSpannableString("L", "#0000ff"));
+            builder.append(buildSpannableString("L", "#0080ff"));
+            builder.append(buildSpannableString("O", "#00ffff"));
+            builder.append(buildSpannableString(" ", "#00ff80"));
+            builder.append(buildSpannableString("W", "#ffff00"));
+            builder.append(buildSpannableString("O", "#ffff00"));
+            builder.append(buildSpannableString("R", "#ffbf00"));
+            builder.append(buildSpannableString("L", "#ff7f00"));
+            builder.append(buildSpannableString("D", "#ff4000"));
+            builder.append(buildSpannableString("!", "#ff0000"));
         } else {
-            builder.append("<span style=\"color:#ff0000;\">H</span>")
-                    .append("<span style=\"color:#ff4000;\">E</span>")
-                    .append("<span style=\"color:#ff7f00;\">L</span>")
-                    .append("<span style=\"color:#ffbf00;\">L</span>")
-                    .append("<span style=\"color:#ffff00;\">O</span>")
-                    .append("<span style=\"color:#ffff00;\"> </span>")
-                    .append("<span style=\"color:#00ff80;\">W</span>")
-                    .append("<span style=\"color:#00ffff;\">O</span>")
-                    .append("<span style=\"color:#0080ff;\">R</span>")
-                    .append("<span style=\"color:#0000ff;\">L</span>")
-                    .append("<span style=\"color:#4600ff;\">D</span>")
-                    .append("<span style=\"color:#8b00ff;\">!</span>");
+            builder.append(buildSpannableString("H", "#ff0000"));
+            builder.append(buildSpannableString("E", "#ff4000"));
+            builder.append(buildSpannableString("L", "#ff7f00"));
+            builder.append(buildSpannableString("L", "#ffbf00"));
+            builder.append(buildSpannableString("O", "#ffff00"));
+            builder.append(buildSpannableString(" ", "#ffff00"));
+            builder.append(buildSpannableString("W", "#00ff80"));
+            builder.append(buildSpannableString("O", "#00ffff"));
+            builder.append(buildSpannableString("R", "#0080ff"));
+            builder.append(buildSpannableString("L", "#0000ff"));
+            builder.append(buildSpannableString("D", "#4600ff"));
+            builder.append(buildSpannableString("!", "#8b00ff"));
         }
 
-        mTitleText.setTypeface(Typeface.SANS_SERIF);
-        mTitleText.setText(Html.fromHtml(builder.toString()));
+        mTitleText.setText(builder, TextView.BufferType.SPANNABLE);
+    }
+
+    private SpannableString buildSpannableString(String text, String color) {
+        SpannableString spannableString = new SpannableString(text);
+        spannableString.setSpan(new ForegroundColorSpan(Color.parseColor(color)), 0, spannableString.length(), 0);
+        return spannableString;
     }
 
     private void generateRandomNum() {
