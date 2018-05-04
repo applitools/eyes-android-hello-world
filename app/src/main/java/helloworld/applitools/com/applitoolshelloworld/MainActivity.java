@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AppCenter.start(getApplication(), "b36e95a0-2218-4c32-8a33-22c06400d1aa", Analytics.class, Crashes.class);
+        AppCenter.start(getApplication(), "APP_SECRET", Analytics.class, Crashes.class);
 
         initViews();
         fillTitle(false);
