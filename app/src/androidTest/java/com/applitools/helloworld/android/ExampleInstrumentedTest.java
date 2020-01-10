@@ -1,4 +1,4 @@
-package helloworld.applitools.com.applitoolshelloworld;
+package com.applitools.helloworld.android;
 
 import android.support.test.rule.ActivityTestRule;
 
