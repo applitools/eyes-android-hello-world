@@ -7,6 +7,7 @@ Android demo application for Eyes Espresso
 - Clone repository.
 
 - Open **ExampleInstrumentedTest** class and set your **APPLITOOLS_API_KEY** to the ***eyes.setApiKey("YOUR_API_KEY")***.
+
 You can find your API key under the user menu located at the right hand side of the test manager toolbar. 
 If you don't yet have an account [create it now](https://applitools.com/users/register) to obtain your key.
 
