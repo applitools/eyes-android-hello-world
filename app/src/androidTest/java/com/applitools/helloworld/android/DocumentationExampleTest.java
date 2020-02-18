@@ -1,17 +1,22 @@
 package com.applitools.helloworld.android;
 
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
+import android.view.View;
 
 import com.applitools.eyes.android.common.BatchInfo;
 import com.applitools.eyes.android.common.EyesRunner;
+import com.applitools.eyes.android.common.Region;
 import com.applitools.eyes.android.common.TestResultContainer;
 import com.applitools.eyes.android.common.TestResults;
 import com.applitools.eyes.android.common.TestResultsSummary;
 import com.applitools.eyes.android.common.config.Configuration;
 import com.applitools.eyes.android.espresso.ClassicRunner;
 import com.applitools.eyes.android.espresso.Eyes;
+import com.applitools.eyes.android.espresso.fluent.EspressoCheckSettings;
+import com.applitools.eyes.android.espresso.fluent.Target;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -62,11 +67,24 @@ public class DocumentationExampleTest {
     public void testStartScreen() {
         eyes.open("Hello World test");
 
+        eyes.checkRegion(ViewMatchers.withId(R.id.click_me_btn), "Click me button");
+        eyes.check(Target.region(ViewMatchers.withId(R.id.click_me_btn)).withName("Click me button"));
+
+        eyes.checkRegion(ViewMatchers.withId(R.id.hello_text_view), "HelloWorld label");
+        View helloLabel = mActivityRule.getActivity().findViewById(R.id.hello_text_view);
+        eyes.check(Target.region(helloLabel).withName("HelloWorld label"));
+
+        Region region = new Region(200, 300, 0, 0);
+        eyes.checkRegion(region, "Region");
+        eyes.check(Target.region(region).withName("Region"));
+
         eyes.checkWindow("Before button click");
+        eyes.check(Target.window().withName("Before button click"));
 
         onView(withId(R.id.click_me_btn)).perform(click());
 
         eyes.checkWindow("After button click");
+        eyes.check(Target.window().withName("After button click"));
     }
 
     @After
