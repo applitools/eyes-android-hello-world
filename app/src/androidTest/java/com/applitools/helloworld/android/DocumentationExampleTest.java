@@ -42,6 +42,7 @@ public class DocumentationExampleTest {
     private static String appName = "EKB Example : classic app";
     private static String batchName = "EKB Example : classic";
     private static String apiKey = "YOUR_API_KEY";
+    private static Sgring testName = "Hello World test";
     private static EyesRunner runner = null;
     private static Configuration suiteConfig;
     private Eyes eyes;
@@ -60,13 +61,17 @@ public class DocumentationExampleTest {
     @Before
     public void beforeEachTest() {
         eyes = new Eyes(runner);
+        /*
+           Uncomment the call to 'eyes.setComponentsProvider' if you use AndroidX components such as 
+           NestedScrollView, RecyclerView and ViewPager2
+        */
+        //eyes.setComponentsProvider(new AndroidXComponentsProvider());
         eyes.setConfiguration(suiteConfig);
     }
 
     @Test
     public void testStartScreen() {
-        eyes.open("Hello World test");
-
+        eyes.open(testName);
         eyes.checkRegion(ViewMatchers.withId(R.id.click_me_btn), "Click me button");
         eyes.check(Target.region(ViewMatchers.withId(R.id.click_me_btn)).withName("Click me button"));
 
@@ -85,6 +90,19 @@ public class DocumentationExampleTest {
 
         eyes.checkWindow("After button click");
         eyes.check(Target.window().withName("After button click"));
+        
+        //TBD - can we add examples with a popup or dialog and then show the 3 possibilities of 
+        eyes.check(Target.window().withName("main viewport only));
+        eyes.check(Target.window().dialog()withName("dialog only));  
+        eyes.check(Target.window().includeAllLayers()withName("Both main viewport and dialog)); 
+        
+         //TBD can we add an example of
+        eyes.check(Target.googleMap().id(mapId);
+        eyes.check(Target.googleMap().id(mapId);
+        eyes.check(Target.googleMap().id(mapId).isNotSupportGoogleMap();
+        
+                   
+                   
     }
 
     @After
