@@ -54,6 +54,9 @@ public class DocumentationExampleTest {
                 .setAppName(appName)
                 .setApiKey(apiKey)
                 .setServerUrl(eyesServerUrl)
+                //Add the following line to force use of Android PixelCopy to obtain screenshots 
+                //This can improve the quality of the screenshot, for example to ensure rendering of the shadow layer.
+                .setFeatures(Feature.PIXEL_COPY_SCREENSHOT) 
                 .setBatch(new BatchInfo(batchName));
     }
 
