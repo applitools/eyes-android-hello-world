@@ -42,6 +42,7 @@ public class DocumentationExampleTest {
     private static String appName = "EKB Example : classic app";
     private static String batchName = "EKB Example : classic";
     private static String apiKey = "YOUR_API_KEY";
+    private static Sgring testName = "Hello World test";
     private static EyesRunner runner = null;
     private static Configuration suiteConfig;
     private Eyes eyes;
@@ -60,31 +61,40 @@ public class DocumentationExampleTest {
     @Before
     public void beforeEachTest() {
         eyes = new Eyes(runner);
+        /*
+           Uncomment the call to 'eyes.setComponentsProvider' if you use AndroidX components such as 
+           NestedScrollView, RecyclerView and ViewPager2
+        */
+        //eyes.setComponentsProvider(new AndroidXComponentsProvider());
         eyes.setConfiguration(suiteConfig);
     }
 
     @Test
     public void testStartScreen() {
-        eyes.open("Hello World test");
+        eyes.open(testName);
+        
+        eyes.check("Click me button",Target.region(ViewMatchers.withId(R.id.click_me_btn)));
 
-        eyes.checkRegion(ViewMatchers.withId(R.id.click_me_btn), "Click me button");
-        eyes.check(Target.region(ViewMatchers.withId(R.id.click_me_btn)).withName("Click me button"));
-
-        eyes.checkRegion(ViewMatchers.withId(R.id.hello_text_view), "HelloWorld label");
         View helloLabel = mActivityRule.getActivity().findViewById(R.id.hello_text_view);
-        eyes.check(Target.region(helloLabel).withName("HelloWorld label"));
+        eyes.check("HelloWorld label", Target.region(helloLabel));
 
         Region region = new Region(200, 300, 0, 0);
-        eyes.checkRegion(region, "Region");
-        eyes.check(Target.region(region).withName("Region"));
+        eyes.check("Region",Target.region(region));
 
-        eyes.checkWindow("Before button click");
-        eyes.check(Target.window().withName("Before button click"));
+        eyes.check("Before button click", Target.window());
 
         onView(withId(R.id.click_me_btn)).perform(click());
-
-        eyes.checkWindow("After button click");
-        eyes.check(Target.window().withName("After button click"));
+        eyes.check("After button click", Target.window());
+        
+        //TBD - can we add examples with a popup or dialog and then show the 3 possibilities of 
+        eyes.check("main viewport only",Target.window());
+        eyes.check("dialog only",Target.window().dialog());  
+        eyes.check("Both main viewport and dialog",Target.window().includeAllLayers()); 
+        
+         //TBD can we add an example of the following with suitable comments?
+        eyes.check("A googleMap", Target.googleMap().id(mapId1));
+        eyes.check("Not a SupportMapFragment", Target.googleMap().id(mapId2).isNotSupportGoogleMap());
+        eyes.check("A fragment", Target.fragment().id(fragId));       
     }
 
     @After
