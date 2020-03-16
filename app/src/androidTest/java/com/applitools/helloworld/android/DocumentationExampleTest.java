@@ -84,12 +84,12 @@ public class DocumentationExampleTest {
         eyes.check("Before button click", Target.window());
 
         onView(withId(R.id.click_me_btn)).perform(click());
-        eyes.check("After button click", Target.window().withName());
+        eyes.check("After button click", Target.window());
         
         //TBD - can we add examples with a popup or dialog and then show the 3 possibilities of 
         eyes.check("main viewport only",Target.window());
         eyes.check("dialog only",Target.window().dialog());  
-        eyes.check("Both main viewport and dialog",Target.window().includeAllLayers()withName()); 
+        eyes.check("Both main viewport and dialog",Target.window().includeAllLayers()); 
         
          //TBD can we add an example of the following with suitable comments?
         eyes.check("A googleMap", Target.googleMap().id(mapId1));
