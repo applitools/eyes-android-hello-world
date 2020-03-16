@@ -16,7 +16,6 @@ import com.applitools.eyes.android.common.TestResultsSummary;
 import com.applitools.eyes.android.common.config.Configuration;
 import com.applitools.eyes.android.espresso.ClassicRunner;
 import com.applitools.eyes.android.espresso.Eyes;
-import com.applitools.eyes.android.espresso.fluent.EspressoCheckSettings;
 import com.applitools.eyes.android.espresso.fluent.Target;
 
 import org.junit.After;
@@ -37,12 +36,19 @@ public class DocumentationExampleTest {
     private static final String TAG = "DocumentationExampleTest";
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
+    public ActivityTestRule<MainActivity> mMainActivityRule = new ActivityTestRule(MainActivity.class, false, false);
+
+    @Rule
+    public ActivityTestRule<DialogActivity> mDialogActivityRule = new ActivityTestRule(DialogActivity.class, false, false);
+
+    @Rule
+    public ActivityTestRule<GoogleMapsActivity> mGoogleMapActivityRule = new ActivityTestRule(GoogleMapsActivity.class, false, false);
 
     private static String eyesServerUrl = "https://eyesapi.applitools.com";
     private static String appName = "EKB Example : classic app";
     private static String batchName = "EKB Example : classic";
-    private static String apiKey = "YOUR_API_KEY";
+    private static String apiKey = "YJBanzkYVJtfj1lqKzyjdjK96nKrfmc2xBeh95yfVSA110";
+//    private static String apiKey = "YOUR_API_KEY";
     private static String testName = "Hello World test";
     private static EyesRunner runner = null;
     private static Configuration suiteConfig;
@@ -75,11 +81,13 @@ public class DocumentationExampleTest {
 
     @Test
     public void testStartScreen() {
+        mMainActivityRule.launchActivity(null);
+
         eyes.open(testName);
 
         eyes.check("Click me button",Target.region(ViewMatchers.withId(R.id.click_me_btn)));
 
-        View helloLabel = mActivityRule.getActivity().findViewById(R.id.hello_text_view);
+        View helloLabel = mMainActivityRule.getActivity().findViewById(R.id.hello_text_view);
         eyes.check("HelloWorld label", Target.region(helloLabel));
 
         Region region = new Region(200, 300, 0, 0);
@@ -89,19 +97,28 @@ public class DocumentationExampleTest {
 
         onView(withId(R.id.click_me_btn)).perform(click());
         eyes.check("After button click", Target.window());
+    }
+
+    @Test
+    public void testDialog() {
+        mDialogActivityRule.launchActivity(null);
+
+        eyes.open("Dialog test");
 
         //TBD - can we add examples with a popup or dialog and then show the 3 possibilities of
         eyes.check("main viewport only",Target.window());
         eyes.check("dialog only",Target.window().dialog());
         eyes.check("Both main viewport and dialog",Target.window().includeAllLayers());
+    }
 
-         //TBD can we add an example of the following with suitable comments?
-        int mapId1 = 0;
-        int mapId2 = 0;
-        int fragId = 0;
-        eyes.check("A googleMap", Target.googleMap().id(mapId1));
-        eyes.check("Not a SupportMapFragment", Target.googleMap().id(mapId2).isNotSupportGoogleMap());
-        eyes.check("A fragment", Target.fragment().id(fragId));
+    @Test
+    public void testGoogleMap() {
+        mGoogleMapActivityRule.launchActivity(null);
+
+        eyes.open("GoogleMaps test");
+
+        eyes.check("A googleMap", Target.googleMap().id(R.id.map));
+//        eyes.check("Not a SupportMapFragment", Target.googleMap().id(R.id.map).isNotSupportGoogleMap());
     }
 
     @After
