@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.applitools.eyes.android.common.BatchInfo;
 import com.applitools.eyes.android.common.EyesRunner;
+import com.applitools.eyes.android.common.Feature;
 import com.applitools.eyes.android.common.Region;
 import com.applitools.eyes.android.common.TestResultContainer;
 import com.applitools.eyes.android.common.TestResults;
@@ -42,7 +43,7 @@ public class DocumentationExampleTest {
     private static String appName = "EKB Example : classic app";
     private static String batchName = "EKB Example : classic";
     private static String apiKey = "YOUR_API_KEY";
-    private static Sgring testName = "Hello World test";
+    private static String testName = "Hello World test";
     private static EyesRunner runner = null;
     private static Configuration suiteConfig;
     private Eyes eyes;
@@ -55,9 +56,9 @@ public class DocumentationExampleTest {
                 .setAppName(appName)
                 .setApiKey(apiKey)
                 .setServerUrl(eyesServerUrl)
-                //Add the following line to force use of Android PixelCopy to obtain screenshots 
+                //Add the following line to force use of Android PixelCopy to obtain screenshots
                 //This can improve the quality of the screenshot, for example to ensure rendering of the shadow layer.
-                .setFeatures(Feature.PIXEL_COPY_SCREENSHOT) 
+                .setFeatures(Feature.PIXEL_COPY_SCREENSHOT)
                 .setBatch(new BatchInfo(batchName));
     }
 
@@ -65,7 +66,7 @@ public class DocumentationExampleTest {
     public void beforeEachTest() {
         eyes = new Eyes(runner);
         /*
-           Uncomment the call to 'eyes.setComponentsProvider' if you use AndroidX components such as 
+           Uncomment the call to 'eyes.setComponentsProvider' if you use AndroidX components such as
            NestedScrollView, RecyclerView and ViewPager2
         */
         //eyes.setComponentsProvider(new AndroidXComponentsProvider());
@@ -75,7 +76,7 @@ public class DocumentationExampleTest {
     @Test
     public void testStartScreen() {
         eyes.open(testName);
-        
+
         eyes.check("Click me button",Target.region(ViewMatchers.withId(R.id.click_me_btn)));
 
         View helloLabel = mActivityRule.getActivity().findViewById(R.id.hello_text_view);
@@ -88,16 +89,19 @@ public class DocumentationExampleTest {
 
         onView(withId(R.id.click_me_btn)).perform(click());
         eyes.check("After button click", Target.window());
-        
-        //TBD - can we add examples with a popup or dialog and then show the 3 possibilities of 
+
+        //TBD - can we add examples with a popup or dialog and then show the 3 possibilities of
         eyes.check("main viewport only",Target.window());
-        eyes.check("dialog only",Target.window().dialog());  
-        eyes.check("Both main viewport and dialog",Target.window().includeAllLayers()); 
-        
+        eyes.check("dialog only",Target.window().dialog());
+        eyes.check("Both main viewport and dialog",Target.window().includeAllLayers());
+
          //TBD can we add an example of the following with suitable comments?
+        int mapId1 = 0;
+        int mapId2 = 0;
+        int fragId = 0;
         eyes.check("A googleMap", Target.googleMap().id(mapId1));
         eyes.check("Not a SupportMapFragment", Target.googleMap().id(mapId2).isNotSupportGoogleMap());
-        eyes.check("A fragment", Target.fragment().id(fragId));       
+        eyes.check("A fragment", Target.fragment().id(fragId));
     }
 
     @After

@@ -36,10 +36,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
-    androidTestImplementation 'com.applitools:eyes-android-espresso:4.3.1@aar'
-    androidTestImplementation 'com.applitools:eyes-android-common:4.3.1'
-    androidTestImplementation 'com.applitools:eyes-android-core:4.3.1'
-    androidTestImplementation 'com.applitools:eyes-android-components:4.3.1@aar'
-    androidTestImplementation 'com.applitools:eyes-android-components-support:4.3.1@aar'
+    androidTestImplementation 'com.applitools:eyes-android-common:4.4.5'
+    androidTestImplementation 'com.applitools:eyes-android-core:4.4.5'
+    androidTestImplementation 'com.applitools:eyes-android-components:4.4.5@aar'
+    androidTestImplementation 'com.applitools:eyes-android-components-support:4.4.5@aar'
+    androidTestImplementation 'com.applitools:eyes-android-espresso:4.4.5@aar'
 
 }
