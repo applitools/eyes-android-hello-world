@@ -26,7 +26,13 @@ public class ExampleInstrumentedTest {
 
         // Initialize the eyes SDK and set your private API key.
         Eyes eyes = new Eyes();
-        eyes.setApiKey("YOUR_API_KEY");
+        eyes.setApiKey("598dR5lXjc1BABfsyWMFkxL8KGw8BI4CdxuUGqFQJTJY110");
+        BatchInfo batchInfo = new BatchInfo("Expresso Batch Name");
+//        batchInfo.setId("ENV_VARIABLE_FOR_COMMIT_SHA");
+        eyes.setBatch(batchInfo);
+//        eyes.setForceFullPageScreenshot(false);
+        LogHandler mLogHandler = new StdoutLogHandler(true);
+        eyes.setLogHandler(mLogHandler);
 
         try {
             // Start the test
