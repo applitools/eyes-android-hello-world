@@ -3,6 +3,9 @@ package com.applitools.helloworld.android;
 import android.support.test.rule.ActivityTestRule;
 
 import com.applitools.eyes.android.espresso.Eyes;
+import com.applitools.eyes.android.common.BatchInfo;
+import com.applitools.eyes.android.common.logger.LogHandler;
+import com.applitools.eyes.android.common.logger.StdoutLogHandler;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -27,9 +30,9 @@ public class ExampleInstrumentedTest {
         // Initialize the eyes SDK and set your private API key.
         Eyes eyes = new Eyes();
         eyes.setApiKey("598dR5lXjc1BABfsyWMFkxL8KGw8BI4CdxuUGqFQJTJY110");
-        BatchInfo batchInfo = new BatchInfo("Expresso Batch Name");
+       // BatchInfo batchInfo = new BatchInfo("Expresso Batch Name");
 //        batchInfo.setId("ENV_VARIABLE_FOR_COMMIT_SHA");
-        eyes.setBatch(batchInfo);
+        //eyes.setBatch(batchInfo);
 //        eyes.setForceFullPageScreenshot(false);
         LogHandler mLogHandler = new StdoutLogHandler(true);
         eyes.setLogHandler(mLogHandler);
