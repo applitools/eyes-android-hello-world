@@ -28,7 +28,7 @@ public class ExampleInstrumentedTest {
 
         // Initialize the eyes SDK and set your private API key.
         Eyes eyes = new Eyes();
-        eyes.setApiKey(System.getenv("APPLITOOLS_API_KEY"));
+        eyes.setApiKey("7499RRiqRDACEiJb6R5wUX8NsfB2109oY446i101H3w3F6Xg110");
 
         try {
             // Start the test
