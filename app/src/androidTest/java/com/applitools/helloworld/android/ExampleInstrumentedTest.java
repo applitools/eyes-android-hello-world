@@ -2,6 +2,7 @@ package com.applitools.helloworld.android;
 
 import android.support.test.rule.ActivityTestRule;
 
+import com.applitools.eyes.android.common.TestResults;
 import com.applitools.eyes.android.espresso.Eyes;
 
 import org.junit.Rule;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -41,7 +43,8 @@ public class ExampleInstrumentedTest {
             eyes.checkWindow("Click!");
 
             // End the test.
-            eyes.close();
+            TestResults results = eyes.close();
+            assertTrue(results.isPassed());
         } finally {
             // If the test was aborted before eyes.close was called, ends the test as aborted.
             eyes.abortIfNotClosed();
