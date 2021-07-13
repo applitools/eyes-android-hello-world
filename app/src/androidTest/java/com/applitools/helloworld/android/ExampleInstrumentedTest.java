@@ -18,6 +18,8 @@ import static org.junit.Assert.assertTrue;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
+
 public class ExampleInstrumentedTest {
 
     @Rule
@@ -28,7 +30,7 @@ public class ExampleInstrumentedTest {
 
         // Initialize the eyes SDK and set your private API key.
         Eyes eyes = new Eyes();
-        eyes.setApiKey("7499RRiqRDACEiJb6R5wUX8NsfB2109oY446i101H3w3F6Xg110");
+        eyes.setApiKey(BuildConfig.APPLITOOLS_API_KEY);
 
         try {
             // Start the test
