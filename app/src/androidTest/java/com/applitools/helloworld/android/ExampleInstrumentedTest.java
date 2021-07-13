@@ -2,9 +2,13 @@ package com.applitools.helloworld.android;
 
 import android.support.test.rule.ActivityTestRule;
 
-import com.applitools.eyes.android.common.TestResults;
+import com.applitools.eyes.android.common.EyesRunner;
+import com.applitools.eyes.android.common.TestResultContainer;
+import com.applitools.eyes.android.common.TestResultsSummary;
+import com.applitools.eyes.android.espresso.ClassicRunner;
 import com.applitools.eyes.android.espresso.Eyes;
 
+import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -22,14 +26,18 @@ import static org.junit.Assert.assertTrue;
 
 public class ExampleInstrumentedTest {
 
+    private static EyesRunner runner = null;
+    private static Eyes eyes = null;
+
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 
     @Test
     public void simpleTest() {
 
+        runner = new ClassicRunner();
         // Initialize the eyes SDK and set your private API key.
-        Eyes eyes = new Eyes();
+        eyes = new Eyes(runner);
         eyes.setApiKey(BuildConfig.APPLITOOLS_API_KEY);
 
         try {
@@ -45,11 +53,18 @@ public class ExampleInstrumentedTest {
             eyes.checkWindow("Click!");
 
             // End the test.
-            TestResults results = eyes.close();
-            assertTrue(results.isPassed());
+            eyes.close();
         } finally {
             // If the test was aborted before eyes.close was called, ends the test as aborted.
             eyes.abortIfNotClosed();
+        }
+    }
+
+    @AfterClass
+    public static void afterTestSuite() {
+        TestResultsSummary allTestResults = runner.getAllTestResults(false);
+        for (TestResultContainer result : allTestResults) {
+            assertTrue(result.getTestResults().isPassed());
         }
     }
 }
