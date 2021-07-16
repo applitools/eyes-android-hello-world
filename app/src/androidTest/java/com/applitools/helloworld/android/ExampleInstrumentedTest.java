@@ -2,6 +2,7 @@ package com.applitools.helloworld.android;
 
 import android.support.test.rule.ActivityTestRule;
 
+import com.applitools.eyes.android.common.BatchInfo;
 import com.applitools.eyes.android.common.EyesRunner;
 import com.applitools.eyes.android.common.TestResultContainer;
 import com.applitools.eyes.android.common.TestResultsSummary;
@@ -9,6 +10,7 @@ import com.applitools.eyes.android.espresso.ClassicRunner;
 import com.applitools.eyes.android.espresso.Eyes;
 
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -28,9 +30,18 @@ public class ExampleInstrumentedTest {
 
     private static EyesRunner runner = null;
     private static Eyes eyes = null;
+    private static BatchInfo batch = null;
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
+
+    @BeforeClass
+    public static void batchInitialization(){
+        batch = new BatchInfo("Espresso Batch");
+        batch.setId(BuildConfig.APPLITOOLS_BATCH_ID);
+        batch.setSequenceName("Espresso");
+        batch.setNotifyOnCompletion(true);
+    }
 
     @Test
     public void simpleTest() {
@@ -39,6 +50,9 @@ public class ExampleInstrumentedTest {
         // Initialize the eyes SDK and set your private API key.
         eyes = new Eyes(runner);
         eyes.setApiKey(BuildConfig.APPLITOOLS_API_KEY);
+        eyes.setBatch(batch);
+
+        System.out.println("\n******* MY BATCH ID: " + System.getenv("APPLITOOLS_BATCH_ID"));
 
         try {
             // Start the test
