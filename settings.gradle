@@ -1,1 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'https://applitools.jfrog.io/artifactory/Android/'
+        }
+    }
+}
+rootProject.name = "eyes-android-hello-world"
 include ':app'

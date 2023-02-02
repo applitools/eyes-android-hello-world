@@ -1,14 +1,18 @@
 package com.applitools.helloworld.android;
 
-import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+
 import android.util.Log;
 import android.view.View;
 
+import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.rule.ActivityTestRule;
+
 import com.applitools.eyes.android.common.BatchInfo;
 import com.applitools.eyes.android.common.EyesRunner;
-import com.applitools.eyes.android.common.Feature;
 import com.applitools.eyes.android.common.Region;
 import com.applitools.eyes.android.common.TestResultContainer;
 import com.applitools.eyes.android.common.TestResults;
@@ -26,10 +30,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-
 @RunWith(AndroidJUnit4.class)
 public class DocumentationExampleTest {
 
@@ -44,11 +44,11 @@ public class DocumentationExampleTest {
     @Rule
     public ActivityTestRule<GoogleMapsActivity> mGoogleMapActivityRule = new ActivityTestRule(GoogleMapsActivity.class, false, false);
 
-    private static String eyesServerUrl = "https://eyesapi.applitools.com";
-    private static String appName = "EKB Example : classic app";
-    private static String batchName = "EKB Example : classic";
-    private static String apiKey = "YOUR_API_KEY";
-    private static String testName = "Hello World test";
+    private static final String eyesServerUrl = "https://eyesapi.applitools.com";
+    private static final String appName = "EKB Example : classic app";
+    private static final String batchName = "EKB Example : classic";
+    private static final String apiKey = "YOUR_API_KEY";
+    private static final String testName = "Hello World test";
     private static EyesRunner runner = null;
     private static Configuration suiteConfig;
     private Eyes eyes;
@@ -61,9 +61,6 @@ public class DocumentationExampleTest {
                 .setAppName(appName)
                 .setApiKey(apiKey)
                 .setServerUrl(eyesServerUrl)
-                //Add the following line to force use of Android PixelCopy to obtain screenshots
-                //This can improve the quality of the screenshot, for example to ensure rendering of the shadow layer.
-                .setFeatures(Feature.PIXEL_COPY_SCREENSHOT)
                 .setBatch(new BatchInfo(batchName));
     }
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.applitools.helloworld.android">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,22 +13,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
             android:name=".DialogActivity"
-            android:screenOrientation="portrait"/>
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".GoogleMapsActivity"
-            android:screenOrientation="portrait"/>
-
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -40,7 +44,8 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDaGWK4pHwFezL2VpVzOJ1qg-Kwng7b5UE"/>
+            android:value="AIzaSyDaGWK4pHwFezL2VpVzOJ1qg-Kwng7b5UE" />
+
     </application>
 
 </manifest>
