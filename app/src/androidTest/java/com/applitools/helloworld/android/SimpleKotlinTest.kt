@@ -16,8 +16,7 @@ import org.junit.runner.RunWith
  * @see [Testing documentation](http://d.android.com/tools/testing)
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleKotlinTest {
-
+class SimpleKotlinTest {
     @get: Rule
     var intentRule = ActivityScenarioRule(MainActivity::class.java)
     @Test
