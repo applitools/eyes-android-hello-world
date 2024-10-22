@@ -5,6 +5,7 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.applitools.eyes.android.common.MatchLevel
 import com.applitools.eyes.android.espresso.Eyes
 import org.junit.Rule
 import org.junit.Test
@@ -25,6 +26,10 @@ class SimpleKotlinTest {
         // Initialize the eyes SDK and set your private API key.
         val eyes = Eyes()
         eyes.apiKey = "YOUR_API_KEY"
+        eyes.matchLevel = MatchLevel.STRICT
+        eyes.forceFullPageScreenshot = true
+        eyes.branchName = "main"
+        eyes.addProperty("username", System.getProperty("user.dir"))
         try {
             // Start the test
             eyes.open("Hello World!", "My first Espresso Kotlin Android test!")

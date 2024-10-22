@@ -14,6 +14,7 @@ import androidx.test.rule.ActivityTestRule;
 import com.applitools.eyes.android.common.BatchInfo;
 import com.applitools.eyes.android.common.EyesRunner;
 import com.applitools.eyes.android.common.Region;
+import com.applitools.eyes.android.common.ScreenshotMode;
 import com.applitools.eyes.android.common.TestResultContainer;
 import com.applitools.eyes.android.common.TestResults;
 import com.applitools.eyes.android.common.TestResultsSummary;
@@ -61,6 +62,8 @@ public class DocumentationExampleTest {
                 .setAppName(appName)
                 .setApiKey(apiKey)
                 .setServerUrl(eyesServerUrl)
+                .setEnvironmentName("PreProd")
+                .setScreenshotMode(ScreenshotMode.SCREEN_CAPTURE)
                 .setBatch(new BatchInfo(batchName));
     }
 
@@ -86,13 +89,13 @@ public class DocumentationExampleTest {
         View helloLabel = mMainActivityRule.getActivity().findViewById(R.id.hello_text_view);
         eyes.check("HelloWorld label", Target.region(helloLabel));
 
-        Region region = new Region(200, 300, 0, 0);
+        Region region = new Region(500, 700, 0, 0);
         eyes.check("Region",Target.region(region));
 
         eyes.check("Before button click", Target.window());
 
         onView(withId(R.id.click_me_btn)).perform(click());
-        eyes.check("After button click", Target.window());
+        eyes.check("After button click", Target.window().layout(withId(R.id.click_me_btn)));
     }
 
     @Test
