@@ -32,6 +32,9 @@ class FullKotlinTest {
         fun setup() {
             // things to execute once and keep around for the class
             eyes = Eyes()
+            val configuration = eyes.configuration;
+            configuration.setNMLScreenshotProvider(true);
+            eyes.configuration = configuration;
             eyes.apiKey = "YOUR_API_KEY"
         }
 

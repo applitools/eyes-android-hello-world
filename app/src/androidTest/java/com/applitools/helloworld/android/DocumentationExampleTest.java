@@ -61,17 +61,13 @@ public class DocumentationExampleTest {
                 .setAppName(appName)
                 .setApiKey(apiKey)
                 .setServerUrl(eyesServerUrl)
+                .setNMLScreenshotProvider(true)
                 .setBatch(new BatchInfo(batchName));
     }
 
     @Before
     public void beforeEachTest() {
         eyes = new Eyes(runner);
-        /*
-           Uncomment the call to 'eyes.setComponentsProvider' if you use AndroidX components such as
-           NestedScrollView, RecyclerView and ViewPager2
-        */
-        //eyes.setComponentsProvider(new AndroidXComponentsProvider());
         eyes.setConfiguration(suiteConfig);
     }
 

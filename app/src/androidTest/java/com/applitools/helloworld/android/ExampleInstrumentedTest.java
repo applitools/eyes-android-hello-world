@@ -11,6 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.applitools.eyes.android.common.config.Configuration;
 import com.applitools.eyes.android.espresso.Eyes;
 
 /**
@@ -29,6 +30,9 @@ public class ExampleInstrumentedTest {
 
         // Initialize the eyes SDK and set your private API key.
         Eyes eyes = new Eyes();
+        Configuration configuration = eyes.getConfiguration();
+        configuration.setNMLScreenshotProvider(true);
+        eyes.setConfiguration(configuration);
         eyes.setApiKey("YOUR_API_KEY");
 
         try {

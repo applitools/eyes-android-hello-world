@@ -43,6 +43,8 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.6.1'
 
     androidTestImplementation 'com.applitools:eyes-android-espresso:latest.release'
+    implementation 'com.applitools:applitools-android-opencv-wrapper:latest.release'
+
 
     implementation 'com.google.android.gms:play-services-maps:19.0.0'
 

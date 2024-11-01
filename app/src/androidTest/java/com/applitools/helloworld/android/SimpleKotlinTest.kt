@@ -24,6 +24,9 @@ class SimpleKotlinTest {
 
         // Initialize the eyes SDK and set your private API key.
         val eyes = Eyes()
+        val configuration = eyes.configuration;
+        configuration.setNMLScreenshotProvider(true);
+        eyes.configuration = configuration;
         eyes.apiKey = "YOUR_API_KEY"
         try {
             // Start the test
