@@ -81,6 +81,21 @@ public class NaturalLanguageTest {
         eyes.check("After tap", Target.window());
     }
 
+    /** A checkpoint taken by a natural-language step: "visual check" runs eyes.check() with the step as its name. */
+    @Test
+    public void visualCheckStep() {
+        scenario = ActivityScenario.launch(MainActivity.class);
+        eyes.open("Visual check step");
+
+        AutomationResult check = eyes.run("visual check");
+        Assert.assertTrue(check.failureReason, check.stepSuccessful);
+
+        eyes.run("tap 'Click me!'");
+
+        // The same checkpoint through the regular API, for comparison.
+        eyes.check("After tap", Target.window());
+    }
+
     /** Several actions in one phrase; the result carries one entry per step. */
     @Test
     public void multiStepPhrase() {
