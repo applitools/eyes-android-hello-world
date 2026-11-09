@@ -109,6 +109,22 @@ public class NaturalLanguageTest {
         eyes.check("Dialog dismissed", Target.window());
     }
 
+    /** The target is far below the fold: the step scrolls it into view before acting on it. */
+    @Test
+    public void scrollsToElementBelowTheFold() {
+        scenario = ActivityScenario.launch(ScrollActivity.class);
+        eyes.open("Scroll to element");
+
+        eyes.check("Top of the list", Target.window());
+
+        AutomationResult tap = eyes.run("tap 'Reach the bottom'");
+        Log.i(TAG, "Found the button at " + tap.info.location + " after scrolling");
+
+        eyes.run("verify that 'You reached the bottom!' is visible");
+
+        eyes.check("Bottom of the list", Target.window());
+    }
+
     /** A step that cannot run throws; the exception carries the structured result. */
     @Test
     public void failedStepExplainsWhy() {

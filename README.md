@@ -28,7 +28,7 @@ Android demo application for [Eyes Espresso](https://applitools.com/docs/api-ref
 | `ExampleInstrumentedTest` | The shortest Eyes test: open, two `checkWindow` checkpoints, close. |
 | `DocumentationExampleTest` | A runner shared by the suite, region and dialog checkpoints, a Google Map, results per test. |
 | `SimpleKotlinTest`, `FullKotlinTest` | The same in Kotlin, with per-test and per-class setup. |
-| `NaturalLanguageTest` | Driving the app with `eyes.run("tap 'Click me!'")`: single and multi-step phrases, dialogs, and how a failed step reports why. |
+| `NaturalLanguageTest` | Driving the app with `eyes.run("tap 'Click me!'")`: single and multi-step phrases, dialogs, scrolling to an element below the fold, and how a failed step reports why. |
 
 Every test reads the key from `BuildConfig.APPLITOOLS_API_KEY`, so nothing in the sources needs editing.
 
