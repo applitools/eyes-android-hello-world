@@ -33,7 +33,7 @@ public class ExampleInstrumentedTest {
         Configuration configuration = eyes.getConfiguration();
         configuration.setNMLScreenshotProvider(true);
         eyes.setConfiguration(configuration);
-        eyes.setApiKey("YOUR_API_KEY");
+        eyes.setApiKey(BuildConfig.APPLITOOLS_API_KEY);
 
         try {
             // Start the test

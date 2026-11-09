@@ -8,6 +8,8 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        // Preview builds of the Espresso SDK published with `./gradlew publishDebugPublicationToMavenLocal`.
+        mavenLocal()
         google()
         mavenCentral()
         maven {
