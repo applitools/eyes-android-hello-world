@@ -15,8 +15,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        // The tests read the Applitools API key from the environment at build time (export APPLITOOLS_API_KEY=...).
-        buildConfigField "String", "APPLITOOLS_API_KEY", "\"" + (System.getenv("APPLITOOLS_API_KEY") ?: "") + "\""
+        // The tests read the Applitools API key at build time: APPLITOOLS_API_KEY in the environment, or
+        // applitoolsApiKey in ~/.gradle/gradle.properties (handy when Android Studio does not inherit the shell).
+        buildConfigField "String", "APPLITOOLS_API_KEY", "\"" + (System.getenv("APPLITOOLS_API_KEY") ?: project.findProperty("applitoolsApiKey") ?: "") + "\""
     }
 
     buildFeatures {

@@ -6,11 +6,13 @@ Android demo application for [Eyes Espresso](https://applitools.com/docs/api-ref
 
 - Clone the repository and open it in Android Studio (Gradle 9.9, AGP 9.5, JDK 17).
 
-- Export your Applitools API key before building the tests; it is compiled into the test APK:
+- Provide your Applitools API key before building the tests; it is compiled into the test APK. Either export it:
 
   ```bash
   export APPLITOOLS_API_KEY="your_api_key"
   ```
+
+  or, when building from Android Studio, put `applitoolsApiKey=your_api_key` in `~/.gradle/gradle.properties`.
 
   You can find your API key under the user menu at the right-hand side of the Test Manager toolbar.
   If you don't yet have an account, [create it now](https://applitools.com/users/register) to obtain your key.
