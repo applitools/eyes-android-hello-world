@@ -4,7 +4,7 @@ Android demo application for [Eyes Espresso](https://applitools.com/docs/api-ref
 
 ## Run the demo
 
-- Clone the repository and open it in Android Studio (Gradle 9.9, AGP 9.4, JDK 17).
+- Clone the repository and open it in Android Studio (Gradle 9.9, AGP 9.5, JDK 17).
 
 - Export your Applitools API key before building the tests; it is compiled into the test APK:
 
