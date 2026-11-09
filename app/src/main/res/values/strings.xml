@@ -8,4 +8,8 @@
     <string name="_123456">123456</string>
     <string name="you_successfully_clicked_the_button">You successfully clicked the button!</string>
     <string name="text_on_the_background">Text on the background</string>
+    <string name="scroll_down_for_the_button">Scroll down for the button</string>
+    <string name="row_n">Row %1$d</string>
+    <string name="reach_the_bottom">Reach the bottom</string>
+    <string name="you_reached_the_bottom">You reached the bottom!</string>
 </resources>

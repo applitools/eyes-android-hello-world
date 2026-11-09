@@ -27,7 +27,7 @@ class SimpleKotlinTest {
         val configuration = eyes.configuration;
         configuration.setNMLScreenshotProvider(true);
         eyes.configuration = configuration;
-        eyes.apiKey = "YOUR_API_KEY"
+        eyes.apiKey = BuildConfig.APPLITOOLS_API_KEY
         try {
             // Start the test
             eyes.open("Hello World!", "My first Espresso Kotlin Android test!")

@@ -47,7 +47,7 @@ public class DocumentationExampleTest {
     private static final String eyesServerUrl = "https://eyesapi.applitools.com";
     private static final String appName = "EKB Example : classic app";
     private static final String batchName = "EKB Example : classic";
-    private static final String apiKey = "YOUR_API_KEY";
+    private static final String apiKey = BuildConfig.APPLITOOLS_API_KEY;
     private static final String testName = "Hello World test";
     private static EyesRunner runner = null;
     private static Configuration suiteConfig;

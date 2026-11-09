@@ -5,9 +5,14 @@ pluginManagement {
         mavenCentral()
     }
 }
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        // Preview builds of the Espresso SDK published with `./gradlew publishDebugPublicationToMavenLocal`.
+        mavenLocal()
         google()
         mavenCentral()
         maven {
